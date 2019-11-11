@@ -15,9 +15,10 @@ public class CourierDao extends JdbcDaoSupport {
     }
 
     public List<String> findCourierTasks(String userName) {
-        String sql = "select o.code " +
+        String sql = "select o.code code" +
         " from users u, courier_tasks ct, orders o " +
-        " where u.name = ? and u.ID = ct.user_id and o.id = ct.order_id  and ct.enabled = 1";
+        " where u.name = ? and u.ID = ct.user_id and o.id = ct.order_id  and ct.enabled = 1 " +
+        " order by code";
 
         Object[] params = new Object[] { userName };
         List<String> orders = this.getJdbcTemplate().queryForList(sql, params, String.class);

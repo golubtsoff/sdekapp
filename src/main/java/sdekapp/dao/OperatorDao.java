@@ -39,7 +39,8 @@ public class OperatorDao extends JdbcDaoSupport {
         String sql = "select o.code code, ot.datetime datetime" +
                 " from sdekbase.users u, operator_tasks ot, courier_tasks ct, orders o " +
                 " where u.NAME = ? and u.id = ot.user_id " +
-                "   and ct.id = ot.courier_task_id and ct.order_id = o.id";
+                "   and ct.id = ot.courier_task_id and ct.order_id = o.id " +
+                " order by code";
 
         Object[] params = new Object[] { userName };
         OperatorTaskDtoMapper mapper = new OperatorTaskDtoMapper();
