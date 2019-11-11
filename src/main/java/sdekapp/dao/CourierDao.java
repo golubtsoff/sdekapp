@@ -1,14 +1,8 @@
 package sdekapp.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-import sdekapp.mapper.UserAppMapper;
-import sdekapp.model.UserApp;
 
 import javax.sql.DataSource;
 import java.util.List;

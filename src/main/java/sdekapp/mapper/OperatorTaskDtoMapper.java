@@ -2,7 +2,6 @@ package sdekapp.mapper;
 
 import org.springframework.jdbc.core.RowMapper;
 import sdekapp.dto.OperatorTaskDto;
-import sdekapp.model.UserApp;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

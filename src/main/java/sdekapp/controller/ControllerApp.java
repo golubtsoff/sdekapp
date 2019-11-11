@@ -12,10 +12,8 @@ import sdekapp.service.CourierService;
 import sdekapp.service.OperatorService;
 import sdekapp.utils.WebUtils;
 
+import javax.validation.Valid;
 import java.security.Principal;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -81,8 +79,14 @@ public class ControllerApp {
         List<OperatorTaskDto> tasks = operatorService.getTasks(userName);
         model.addAttribute("tasks", tasks);
 
-        model.addAttribute("localDateTime", LocalDateTime.now());
-
         return "operatorPage";
+    }
+
+    @RequestMapping(value="courier/notInTime", method = RequestMethod.POST)
+    public String deleteUser (@Valid String orderCode) {
+        if (!orderCode.isEmpty()){
+            courierService.setTaskDisabled(orderCode);
+        }
+        return "redirect:/courier";
     }
 }
