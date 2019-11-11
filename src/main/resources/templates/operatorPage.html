@@ -1,21 +1,22 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:utext="${title}"></title>
+    <title>Operator Page</title>
 </head>
 <body>
 <!-- Include _menu.html -->
 <th:block th:include="/_menu"></th:block>
+<h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
 
-<h2>Admin Page</h2>
-<h3>Welcome :
-    <span th:utext="${#request.userPrincipal.name}"></span>
-</h3>
-<b>This is protected page!</b>
-
-<br/><br/>
-
-<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+<div class="taskList" th:object="${task}">
+    <select class="form-control" id="operatorTasks" name="operatorTasks">
+        <option value="">Operator tasks (order's code / time)</option>
+        <option th:each="task : ${tasks}"
+                th:value="${task.orderCode}"
+                th:text="${task.orderCode}+' / '+${#temporals.format(task.dateTime, 'yyyy-MM-dd HH:mm:ss')}">
+        </option>
+    </select>
+</div>
 
 </body>
 
